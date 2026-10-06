@@ -1,0 +1,411 @@
+(()=>{
+let state={contests:[],sources:[],history:[]};
+
+const $=id=>document.getElementById(id);
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({
+  '&':'&amp;',
+  '<':'&lt;',
+  '>':'&gt;',
+  '"':'&quot;',
+  "'":'&#39;'
+}[m]));
+
+async function api(url,opt={}){
+  const r=await fetch(url,{
+    credentials:'same-origin',
+    headers:{
+      'content-type':'application/json',
+      ...(opt.headers||{})
+    },
+    ...opt
+  });
+
+  let j=await r.json().catch(()=>({}));
+
+  if(!r.ok) throw Error(j.error||`Erro ${r.status}`);
+
+  return j;
+}
+
+async function load(){
+  try{
+    state=await api('/api/dashboard');
+    showApp();
+    render();
+  }catch(e){
+    if(e.message==='Não autorizado'){
+      showLogin();
+    }else{
+      showLogin();
+      $('loginMsg').textContent=e.message;
+    }
+  }
+}
+
+function showLogin(){
+  $('loginView').hidden=false;
+  $('appView').hidden=true;
+  $('logout').style.display='none';
+}
+
+function showApp(){
+  $('loginView').hidden=true;
+  $('appView').hidden=false;
+  $('logout').style.display='inline-block';
+}
+
+function status(x){
+  if(x.inicio&&x.fim){
+    let n=new Date(),
+        a=new Date(x.inicio+'T00:00:00'),
+        b=new Date(x.fim+'T23:59:59');
+
+    if(n>=a&&n<=b)return'aberto';
+    if(n>b)return'fechado';
+  }
+
+  return x.status||'iminente';
+}
+
+function render(){
+  let a=state.contests;
+
+  let counts={
+    aberto:0,
+    iminente:0,
+    fechado:0
+  };
+
+  a.forEach(x=>counts[status(x)]++);
+
+  $('total').textContent=a.length;
+  $('open').textContent=counts.aberto;
+  $('soon').textContent=counts.iminente;
+  $('closed').textContent=counts.fechado;
+
+  let u=[...new Set(
+    a.map(x=>x.uf).filter(Boolean)
+  )].sort();
+
+  $('filterUF').innerHTML=
+    '<option value="">Todas as UFs</option>'+
+    u.map(x=>`<option>${esc(x)}</option>`).join('');
+
+  renderRows();
+  renderSources();
+  renderHistory();
+}
+
+function renderRows(){
+  let q=$('search').value.toLowerCase(),
+      st=$('filterStatus').value,
+      uf=$('filterUF').value;
+
+  let a=state.contests.filter(x=>{
+    let s=status(x),
+        t=[
+          x.nome,
+          x.orgao,
+          x.banca,
+          x.municipio,
+          x.uf
+        ].join(' ').toLowerCase();
+
+    return(!q||t.includes(q))&&
+          (!st||s===st)&&
+          (!uf||x.uf===uf);
+  });
+
+  $('contestRows').innerHTML=a.length?
+    a.map(x=>{
+      let s=status(x);
+
+      return `<tr>
+        <td>
+          <b>${esc(x.nome)}</b><br>
+          <small>${esc(x.orgao||'')}</small>
+        </td>
+        <td>${esc(x.uf)}</td>
+        <td>${esc(x.abrangencia)}</td>
+        <td>
+          <span class="badge-dot ${s}">
+            ${s.toUpperCase()}
+          </span>
+        </td>
+        <td>${esc(x.updated||x.updated_at||'—')}</td>
+        <td>
+          <div class="actions">
+            <button class="mini-btn"
+              onclick='window.editContest(${JSON.stringify(x).replace(/'/g,"&#39;")})'>
+              Editar
+            </button>
+
+            <button class="mini-btn danger"
+              onclick="window.deleteContest('${esc(x.id)}')">
+              Excluir
+            </button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('')
+    :
+    '<tr><td colspan="6" class="empty-row">Nenhum registro.</td></tr>';
+}
+
+function renderSources(){
+  $('sourceRows').innerHTML=state.sources.length?
+    state.sources.map(x=>`
+      <tr>
+        <td>${esc(x.name)}</td>
+        <td>${esc(x.type)}</td>
+        <td>${esc(x.scope||'')}</td>
+        <td>
+          <a target="_blank"
+             rel="noopener"
+             href="${esc(x.url)}">
+             ${esc(x.url)}
+          </a>
+        </td>
+        <td>
+          <button class="mini-btn danger"
+            onclick="window.deleteSource(${x.id})">
+            Excluir
+          </button>
+        </td>
+      </tr>
+    `).join('')
+    :
+    '<tr><td colspan="5" class="empty-row">Nenhuma fonte.</td></tr>';
+}
+
+function renderHistory(){
+  $('historyRows').innerHTML=state.history.length?
+    state.history.map(x=>`
+      <tr>
+        <td>${esc(x.created_at)}</td>
+        <td>${esc(x.action)}</td>
+        <td>${esc(x.contest_id||'—')}</td>
+        <td>${esc(x.details||'')}</td>
+      </tr>
+    `).join('')
+    :
+    '<tr><td colspan="4" class="empty-row">Sem histórico.</td></tr>';
+}
+
+function openContest(x={}){
+  [
+    'id',
+    'nome',
+    'orgao',
+    'uf',
+    'municipio',
+    'abrangencia',
+    'status',
+    'vagas',
+    'escolaridade',
+    'banca',
+    'inicio',
+    'fim',
+    'prova',
+    'fonte',
+    'confidence'
+  ].forEach(k=>{
+    $('f_'+k).value=x[k]??'';
+  });
+
+  $('f_oficial').value=x.oficial?'1':'0';
+
+  $('modalTitle').textContent=
+    x.id?'Editar concurso':'Novo concurso';
+
+  $('modal').hidden=false;
+}
+
+window.editContest=openContest;
+
+window.deleteContest=async id=>{
+  if(!confirm('Excluir este concurso?'))return;
+
+  try{
+    await api('/api/contest?id='+encodeURIComponent(id),{
+      method:'DELETE'
+    });
+
+    await load();
+  }catch(e){
+    alert(e.message);
+  }
+};
+
+window.deleteSource=async id=>{
+  if(!confirm('Excluir esta fonte?'))return;
+
+  try{
+    await api('/api/sources?id='+id,{
+      method:'DELETE'
+    });
+
+    await load();
+  }catch(e){
+    alert(e.message);
+  }
+};
+
+$('loginForm').onsubmit=async e=>{
+  e.preventDefault();
+
+  $('loginMsg').textContent='Entrando…';
+
+  try{
+    await api('/api/login',{
+      method:'POST',
+      body:JSON.stringify({
+        password:$('password').value
+      })
+    });
+
+    $('password').value='';
+
+    await load();
+  }catch(e){
+    $('loginMsg').textContent=e.message;
+  }
+};
+
+$('logout').onclick=async()=>{
+  await api('/api/logout',{
+    method:'POST'
+  });
+
+  showLogin();
+};
+
+$('newContest').onclick=()=>{
+  openContest();
+};
+
+$('closeModal').onclick=
+$('cancel').onclick=()=>{
+  $('modal').hidden=true;
+};
+
+$('closeSource').onclick=
+$('cancelSource').onclick=()=>{
+  $('sourceModal').hidden=true;
+};
+
+$('contestForm').onsubmit=async e=>{
+  e.preventDefault();
+
+  let x={};
+
+  [
+    'id',
+    'nome',
+    'orgao',
+    'uf',
+    'municipio',
+    'abrangencia',
+    'status',
+    'vagas',
+    'escolaridade',
+    'banca',
+    'inicio',
+    'fim',
+    'prova',
+    'fonte',
+    'confidence'
+  ].forEach(k=>{
+    x[k]=$('f_'+k).value;
+  });
+
+  x.oficial=$('f_oficial').value==='1';
+
+  try{
+    await api('/api/contest',{
+      method:'POST',
+      body:JSON.stringify(x)
+    });
+
+    $('modal').hidden=true;
+
+    await load();
+  }catch(e){
+    $('formMsg').textContent=e.message;
+  }
+};
+
+$('newSource').onclick=()=>{
+  $('sourceModal').hidden=false;
+};
+
+$('sourceForm').onsubmit=async e=>{
+  e.preventDefault();
+
+  try{
+    await api('/api/sources',{
+      method:'POST',
+      body:JSON.stringify({
+        name:$('s_name').value,
+        type:$('s_type').value,
+        scope:$('s_scope').value,
+        url:$('s_url').value
+      })
+    });
+
+    $('sourceModal').hidden=true;
+    e.target.reset();
+
+    await load();
+  }catch(e){
+    $('sourceMsg').textContent=e.message;
+  }
+};
+
+$('seed').onclick=async()=>{
+  if(!confirm(
+    'Carregar a base inicial no D1? Registros existentes não serão duplicados.'
+  ))return;
+
+  try{
+    let r=await api('/api/seed',{
+      method:'POST'
+    });
+
+    $('systemMsg').textContent=
+      `Base carregada: ${r.inserted} registros.`;
+
+    await load();
+  }catch(e){
+    $('systemMsg').textContent=e.message;
+  }
+};
+
+$('refresh').onclick=load;
+
+[
+  'search',
+  'filterStatus',
+  'filterUF'
+].forEach(id=>{
+  $(id).addEventListener('input',renderRows);
+});
+
+document.querySelectorAll('.tab').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.tab')
+      .forEach(x=>x.classList.remove('active'));
+
+    document.querySelectorAll('.admin-section')
+      .forEach(x=>x.hidden=true);
+
+    b.classList.add('active');
+
+    $('tab-'+b.dataset.tab).hidden=false;
+  };
+});
+
+load();
+
+})();
