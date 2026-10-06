@@ -1,1 +1,44 @@
-{"official_portals":[{"name":"Diário Oficial da União","type":"official","url":"https://www.in.gov.br/","scope":"national"},{"name":"Gov.br","type":"official","url":"https://www.gov.br/","scope":"national"},{"name":"Polícia Federal","type":"official","url":"https://www.gov.br/pf/pt-br/assuntos/concursos","scope":"national"},{"name":"PRF","type":"official","url":"https://www.gov.br/prf/pt-br/concursos","scope":"national"},{"name":"Transpetro","type":"official","url":"https://transpetro.com.br/transpetro-institucional/quem-somos/carreiras/concursos","scope":"national"},{"name":"Receita Federal","type":"official","url":"https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/concursos","scope":"national"},{"name":"INSS","type":"official","url":"https://www.gov.br/inss/pt-br/acesso-a-informacao/concursos-publicos","scope":"national"},{"name":"ALEPA","type":"official","url":"https://www.alepa.pa.gov.br/Transparencia/Page/Concursos","scope":"PA"},{"name":"CETAP","type":"organizer","url":"https://www.cetapnet.com.br/","scope":"PA"},{"name":"FGV","type":"organizer","url":"https://conhecimento.fgv.br/concursos","scope":"national"},{"name":"FCC","type":"organizer","url":"https://www.concursosfcc.com.br/","scope":"national"},{"name":"Cebraspe","type":"organizer","url":"https://www.cebraspe.org.br/concursos","scope":"national"},{"name":"AOCP","type":"organizer","url":"https://www.institutoaocp.org.br/concursos","scope":"national"}],"discovery_feeds":[]}
+{
+  "official": [
+    {"name":"DOU","url":"https://www.in.gov.br/","scope":"national"},
+    {"name":"Gov.br","url":"https://www.gov.br/","scope":"national"},
+    {"name":"Polícia Federal","url":"https://www.gov.br/pf/pt-br/assuntos/concursos","scope":"national"},
+    {"name":"PRF","url":"https://www.gov.br/prf/pt-br/concursos","scope":"national"},
+    {"name":"Transpetro","url":"https://transpetro.com.br/transpetro-institucional/quem-somos/carreiras/concursos","scope":"national"},
+    {"name":"Receita Federal","url":"https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/concursos","scope":"national"},
+    {"name":"INSS","url":"https://www.gov.br/inss/pt-br/acesso-a-informacao/concursos-publicos","scope":"national"},
+    {"name":"ALEPA","url":"https://www.alepa.pa.gov.br/Transparencia/Page/Concursos","scope":"PA"},
+    {"name":"CETAP","url":"https://www.cetapnet.com.br/","scope":"PA"}
+  ],
+  "discovery_rss": [
+    {"name":"Notícias nacionais","uf":"Nacional","query":"concurso público edital vagas inscrições"},
+    {"name":"Pará","uf":"PA","query":"concurso público Pará edital vagas"},
+    {"name":"Acre","uf":"AC","query":"concurso público Acre edital vagas"},
+    {"name":"Alagoas","uf":"AL","query":"concurso público Alagoas edital vagas"},
+    {"name":"Amapá","uf":"AP","query":"concurso público Amapá edital vagas"},
+    {"name":"Amazonas","uf":"AM","query":"concurso público Amazonas edital vagas"},
+    {"name":"Bahia","uf":"BA","query":"concurso público Bahia edital vagas"},
+    {"name":"Ceará","uf":"CE","query":"concurso público Ceará edital vagas"},
+    {"name":"Distrito Federal","uf":"DF","query":"concurso público Distrito Federal edital vagas"},
+    {"name":"Espírito Santo","uf":"ES","query":"concurso público Espírito Santo edital vagas"},
+    {"name":"Goiás","uf":"GO","query":"concurso público Goiás edital vagas"},
+    {"name":"Maranhão","uf":"MA","query":"concurso público Maranhão edital vagas"},
+    {"name":"Mato Grosso","uf":"MT","query":"concurso público Mato Grosso edital vagas"},
+    {"name":"Mato Grosso do Sul","uf":"MS","query":"concurso público Mato Grosso do Sul edital vagas"},
+    {"name":"Minas Gerais","uf":"MG","query":"concurso público Minas Gerais edital vagas"},
+    {"name":"Pará","uf":"PA","query":"concurso público Pará edital vagas"},
+    {"name":"Paraíba","uf":"PB","query":"concurso público Paraíba edital vagas"},
+    {"name":"Paraná","uf":"PR","query":"concurso público Paraná edital vagas"},
+    {"name":"Pernambuco","uf":"PE","query":"concurso público Pernambuco edital vagas"},
+    {"name":"Piauí","uf":"PI","query":"concurso público Piauí edital vagas"},
+    {"name":"Rio de Janeiro","uf":"RJ","query":"concurso público Rio de Janeiro edital vagas"},
+    {"name":"Rio Grande do Norte","uf":"RN","query":"concurso público Rio Grande do Norte edital vagas"},
+    {"name":"Rio Grande do Sul","uf":"RS","query":"concurso público Rio Grande do Sul edital vagas"},
+    {"name":"Rondônia","uf":"RO","query":"concurso público Rondônia edital vagas"},
+    {"name":"Roraima","uf":"RR","query":"concurso público Roraima edital vagas"},
+    {"name":"Santa Catarina","uf":"SC","query":"concurso público Santa Catarina edital vagas"},
+    {"name":"São Paulo","uf":"SP","query":"concurso público São Paulo edital vagas"},
+    {"name":"Sergipe","uf":"SE","query":"concurso público Sergipe edital vagas"},
+    {"name":"Tocantins","uf":"TO","query":"concurso público Tocantins edital vagas"}
+  ]
+}
