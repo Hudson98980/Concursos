@@ -1,16 +1,1 @@
-{
-  "sources": [
-    {"id":"alepa","name":"ALEPA","url":"https://www.alepa.pa.gov.br/Transparencia/Page/Concursos","contests":["alepa-medio-2026","alepa-superior-2026","alepa-procurador-2026"]},
-    {"id":"trt8","name":"TRT8","url":"https://www.trt8.jus.br/","contests":["trt8-2026"]},
-    {"id":"ifpa","name":"IFPA","url":"https://www.ifpa.edu.br/","contests":["ifpa-2026"]},
-    {"id":"seduc-pa","name":"SEDUC PA","url":"https://www.seduc.pa.gov.br/","contests":["seduc-pa-2026"]},
-    {"id":"fhcgv","name":"FHCGV","url":"https://www.gasparvianna.pa.gov.br/","contests":["fhcgv-2026"]},
-    {"id":"pc-pa","name":"PC PA","url":"https://www.pc.pa.gov.br/","contests":["pc-pa-2026-27"],"openRequires":["edital","inscri"]},
-    {"id":"agtran-pa","name":"AGTRAN PA","url":"https://www.agtran.pa.gov.br/","contests":["agtran-pa-2026"],"openRequires":["edital","inscri"]},
-    {"id":"iterpa","name":"ITERPA","url":"https://www.iterpa.pa.gov.br/","contests":["iterpa-2026"],"openRequires":["edital","inscri"]},
-    {"id":"imetropara","name":"IMETROPARÁ","url":"https://www.imetropara.pa.gov.br/","contests":["imetropara-2026"],"openRequires":["edital","inscri"]},
-    {"id":"belem","name":"Prefeitura de Belém","url":"https://www.belem.pa.gov.br/","contests":["gmb-belem","semmma-belem-2026"],"openRequires":["edital","inscri"]},
-    {"id":"prf","name":"PRF","url":"https://www.gov.br/prf/pt-br","contests":["prf-2027"],"openRequires":["edital","inscri"]},
-    {"id":"pf","name":"Polícia Federal","url":"https://www.gov.br/pf/pt-br","contests":["pf-2027","pec-pf-2026"],"openRequires":["edital","inscri"]}
-  ]
-}
+{"official_portals":[{"name":"Diário Oficial da União","type":"official","url":"https://www.in.gov.br/","scope":"national"},{"name":"Gov.br","type":"official","url":"https://www.gov.br/","scope":"national"},{"name":"Polícia Federal","type":"official","url":"https://www.gov.br/pf/pt-br/assuntos/concursos","scope":"national"},{"name":"PRF","type":"official","url":"https://www.gov.br/prf/pt-br/concursos","scope":"national"},{"name":"Transpetro","type":"official","url":"https://transpetro.com.br/transpetro-institucional/quem-somos/carreiras/concursos","scope":"national"},{"name":"Receita Federal","type":"official","url":"https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/concursos","scope":"national"},{"name":"INSS","type":"official","url":"https://www.gov.br/inss/pt-br/acesso-a-informacao/concursos-publicos","scope":"national"},{"name":"ALEPA","type":"official","url":"https://www.alepa.pa.gov.br/Transparencia/Page/Concursos","scope":"PA"},{"name":"CETAP","type":"organizer","url":"https://www.cetapnet.com.br/","scope":"PA"},{"name":"FGV","type":"organizer","url":"https://conhecimento.fgv.br/concursos","scope":"national"},{"name":"FCC","type":"organizer","url":"https://www.concursosfcc.com.br/","scope":"national"},{"name":"Cebraspe","type":"organizer","url":"https://www.cebraspe.org.br/concursos","scope":"national"},{"name":"AOCP","type":"organizer","url":"https://www.institutoaocp.org.br/concursos","scope":"national"}],"discovery_feeds":[]}

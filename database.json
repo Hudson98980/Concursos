@@ -1,0 +1,87 @@
+{
+  "version": 4,
+  "updatedAt": "2026-10-06T03:07:13.947846+00:00",
+  "contests": [],
+  "history": [],
+  "discovered": [],
+  "sources": [
+    {
+      "name": "Diário Oficial da União",
+      "type": "official",
+      "url": "https://www.in.gov.br/",
+      "scope": "national"
+    },
+    {
+      "name": "Gov.br",
+      "type": "official",
+      "url": "https://www.gov.br/",
+      "scope": "national"
+    },
+    {
+      "name": "Polícia Federal",
+      "type": "official",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "PRF",
+      "type": "official",
+      "url": "https://www.gov.br/prf/pt-br/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "Transpetro",
+      "type": "official",
+      "url": "https://transpetro.com.br/transpetro-institucional/quem-somos/carreiras/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "Receita Federal",
+      "type": "official",
+      "url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "INSS",
+      "type": "official",
+      "url": "https://www.gov.br/inss/pt-br/acesso-a-informacao/concursos-publicos",
+      "scope": "national"
+    },
+    {
+      "name": "ALEPA",
+      "type": "official",
+      "url": "https://www.alepa.pa.gov.br/Transparencia/Page/Concursos",
+      "scope": "PA"
+    },
+    {
+      "name": "CETAP",
+      "type": "organizer",
+      "url": "https://www.cetapnet.com.br/",
+      "scope": "PA"
+    },
+    {
+      "name": "FGV",
+      "type": "organizer",
+      "url": "https://conhecimento.fgv.br/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "FCC",
+      "type": "organizer",
+      "url": "https://www.concursosfcc.com.br/",
+      "scope": "national"
+    },
+    {
+      "name": "Cebraspe",
+      "type": "organizer",
+      "url": "https://www.cebraspe.org.br/concursos",
+      "scope": "national"
+    },
+    {
+      "name": "AOCP",
+      "type": "organizer",
+      "url": "https://www.institutoaocp.org.br/concursos",
+      "scope": "national"
+    }
+  ]
+}

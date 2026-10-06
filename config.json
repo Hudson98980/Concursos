@@ -1,0 +1,1 @@
+{"timezone":"America/Belem","confidence_thresholds":{"official":0.9,"trusted":0.7,"discovery":0.45},"never_auto_open_without_dates":true,"dedupe_keys":["normalized_name","organization","uf","year"]}
