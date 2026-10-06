@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {"id":"alepa","name":"ALEPA","url":"https://www.alepa.pa.gov.br/Transparencia/Page/Concursos","contests":["alepa-medio-2026","alepa-superior-2026","alepa-procurador-2026"]},
+    {"id":"trt8","name":"TRT8","url":"https://www.trt8.jus.br/","contests":["trt8-2026"]},
+    {"id":"ifpa","name":"IFPA","url":"https://www.ifpa.edu.br/","contests":["ifpa-2026"]},
+    {"id":"seduc-pa","name":"SEDUC PA","url":"https://www.seduc.pa.gov.br/","contests":["seduc-pa-2026"]},
+    {"id":"fhcgv","name":"FHCGV","url":"https://www.gasparvianna.pa.gov.br/","contests":["fhcgv-2026"]},
+    {"id":"pc-pa","name":"PC PA","url":"https://www.pc.pa.gov.br/","contests":["pc-pa-2026-27"],"openRequires":["edital","inscri"]},
+    {"id":"agtran-pa","name":"AGTRAN PA","url":"https://www.agtran.pa.gov.br/","contests":["agtran-pa-2026"],"openRequires":["edital","inscri"]},
+    {"id":"iterpa","name":"ITERPA","url":"https://www.iterpa.pa.gov.br/","contests":["iterpa-2026"],"openRequires":["edital","inscri"]},
+    {"id":"imetropara","name":"IMETROPARÁ","url":"https://www.imetropara.pa.gov.br/","contests":["imetropara-2026"],"openRequires":["edital","inscri"]},
+    {"id":"belem","name":"Prefeitura de Belém","url":"https://www.belem.pa.gov.br/","contests":["gmb-belem","semmma-belem-2026"],"openRequires":["edital","inscri"]},
+    {"id":"prf","name":"PRF","url":"https://www.gov.br/prf/pt-br","contests":["prf-2027"],"openRequires":["edital","inscri"]},
+    {"id":"pf","name":"Polícia Federal","url":"https://www.gov.br/pf/pt-br","contests":["pf-2027","pec-pf-2026"],"openRequires":["edital","inscri"]}
+  ]
+}
